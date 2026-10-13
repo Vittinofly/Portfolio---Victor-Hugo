@@ -1,0 +1,32 @@
+# Configurações Gerais do Build
+[build]
+  publish = "."
+
+# Redirecionamento e Forçar HTTPS
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
+# Cabeçalhos HTTP de Segurança
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Impede que o site seja colocado em iframes de outros domínios (Anti-Clickjacking)
+    X-Frame-Options = "DENY"
+    
+    # Impede que o navegador tente adivinhar o tipo de arquivo (Anti-MIME Sniffing)
+    X-Content-Type-Options = "nosniff"
+    
+    # Ativa a proteção do navegador contra Cross-Site Scripting (XSS)
+    X-XSS-Protection = "1; mode=block"
+    
+    # Controla o envio de informações de origem ao clicar em links externos
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Define de onde o site pode carregar scripts, estilos e fontes (Content Security Policy)
+    Content-Security-Policy = "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:;"
+
+    # Força uso de conexões HTTPS criptografadas (HSTS)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"

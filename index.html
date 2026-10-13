@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Hugo | Desenvolvedor Full Stack & Soluções Digitais</title>
+    
+    <!-- Google Fonts: Inter e Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            glow: '#ff2a4b'
+                        },
+                        obsidian: {
+                            DEFAULT: '#050508',
+                            surface: '#0d0e15',
+                            card: '#131520',
+                            border: '#212435',
+                            borderHover: '#3b3f5c'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Three.js para o Fundo 3D Interativo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Estilos Customizados -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-obsidian text-gray-200 font-sans antialiased selection:bg-brand-600 selection:text-white overflow-x-hidden">
+
+    <!-- Canvas para Animação 3D -->
+    <canvas id="canvas-3d" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Overlay Gradiente -->
+    <div class="fixed inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/70 to-obsidian pointer-events-none z-0"></div>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-6" id="navbar">
+        <div class="max-w-7xl mx-auto flex items-center justify-between bg-obsidian-surface/60 backdrop-blur-xl border border-obsidian-border/80 px-6 py-3.5 rounded-full shadow-2xl">
+            <a href="#" class="font-display font-bold text-lg tracking-tight text-white flex items-center gap-2">
+                <span class="w-2.0 h-2.0 rounded-full bg-brand-glow animate-pulse"></span>
+                Victor<span class="text-brand-glow">Hugo</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
+                <a href="#sobre" class="hover:text-white transition duration-200">Sobre</a>
+                <a href="#servicos" class="hover:text-white transition duration-200">Soluções</a>
+                <a href="#projetos" class="hover:text-white transition duration-200">Projetos</a>
+                <a href="#certificados" class="hover:text-white transition duration-200">Certificados</a>
+            </nav>
+
+            <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Olá+Victor,+vi+seu+portfólio+e+preciso+de+uma+solução+digital+para+a+minha+empresa" 
+               target="_blank" 
+               class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-brand-600/20 flex items-center gap-2 hover:scale-105">
+                <i class="ph ph-whatsapp-logo text-base"></i>
+                <span>Falar no WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 pt-28">
+
+        <!-- Hero Section -->
+        <section id="sobre" class="min-h-[85vh] flex items-center px-6 py-12">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Coluna de Texto (7 colunas) -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-glow text-xs font-medium tracking-wide">
+                        <i class="ph ph-circle-wavy-check text-sm"></i>
+                        <span>Desenvolvedor Full Stack & Consultor Digital</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.15]">
+                        Engenharia de Software e <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-glow via-rose-400 to-amber-200">soluções digitais</span> para alavancar negócios.
+                    </h1>
+
+                    <p class="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                        Desenvolvo sistemas completos, landing pages de alta conversão e infraestruturas digitais sob medida. Foco total em desempenho, escala e resultados reais para a sua empresa.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Olá+Victor,+vi+seu+portfólio+e+preciso+de+uma+solução+digital+para+a+minha+empresa" 
+                           target="_blank" 
+                           class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-7 py-4 rounded-xl transition duration-300 shadow-xl shadow-brand-600/25 flex items-center gap-3 group">
+                            <span>Solicitar Projeto</span>
+                            <i class="ph ph-arrow-right text-base group-hover:translate-x-1 transition duration-200"></i>
+                        </a>
+
+                        <a href="#projetos" class="bg-obsidian-surface hover:bg-obsidian-card border border-obsidian-border text-neutral-300 font-medium text-sm px-7 py-4 rounded-xl transition duration-300">
+                            Ver Portfólio
+                        </a>
+                    </div>
+
+                    <!-- Socials -->
+                    <div class="flex items-center gap-6 pt-4 text-neutral-400">
+                        <a href="https://github.com/Vittinofly" target="_blank" class="hover:text-brand-glow transition duration-200 text-xl flex items-center gap-2">
+                            <i class="ph ph-github-logo"></i>
+                            <span class="text-xs font-medium">GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/%E1%B4%A0%C9%AA%E1%B4%84%E1%B4%9B%E1%B4%8F%CA%80-%CA%9C%E1%B4%9C%C9%A2%E1%B4%8F-b56328442/" target="_blank" class="hover:text-brand-glow transition duration-200 text-xl flex items-center gap-2">
+                            <i class="ph ph-linkedin-logo"></i>
+                            <span class="text-xs font-medium">LinkedIn</span>
+                        </a>
+                        <a href="https://www.instagram.com/y.ovictor" target="_blank" class="hover:text-brand-glow transition duration-200 text-xl flex items-center gap-2">
+                            <i class="ph ph-instagram-logo"></i>
+                            <span class="text-xs font-medium">Instagram</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Foto de Perfil (5 colunas) -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative w-72 sm:w-80 lg:w-full max-w-md aspect-square rounded-2xl p-1 bg-gradient-to-b from-brand-glow/30 via-obsidian-border to-transparent">
+                        <div class="w-full h-full rounded-[14px] overflow-hidden bg-obsidian-card relative group">
+                            <img src="IMG_7216.jpg" 
+                                 alt="Victor Hugo" 
+                                 id="profile-img"
+                                 onerror="this.onerror=null; this.src='https://github.com/Vittinofly.png';" 
+                                 class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition duration-700">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80"></div>
+                            
+                            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-obsidian-surface/80 backdrop-blur-md border border-obsidian-border/80">
+                                <p class="font-display font-bold text-white text-base">Victor Hugo</p>
+                                <p class="text-neutral-400 text-xs">Full Stack Developer & SEO Strategy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção de Soluções e Serviços -->
+        <section id="servicos" class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                
+                <div class="max-w-2xl space-y-4">
+                    <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Especialidades</p>
+                    <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Soluções planejadas para alto impacto comercial</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1 -->
+                    <div class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-8 rounded-2xl transition duration-300 space-y-6 group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
+                            <i class="ph ph-code"></i>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="font-display font-bold text-xl text-white">Desenvolvimento Full Stack</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">
+                                Arquitetura e construção de aplicações web completas, SaaS e sistemas corporativos robustos do front-end ao banco de dados.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-8 rounded-2xl transition duration-300 space-y-6 group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
+                            <i class="ph ph-rocket-launch"></i>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="font-display font-bold text-xl text-white">Landing Pages de Alta Conversão</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">
+                                Páginas focadas na captura e vendas de clientes, combinando velocidade extrema, SEO otimizado e copywriting estratégico.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-8 rounded-2xl transition duration-300 space-y-6 group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
+                            <i class="ph ph-chart-line-up"></i>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="font-display font-bold text-xl text-white">Presença Digital & Suporte Técnico</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">
+                                Suporte contínuo para usuários, estruturação do perfil no Google Meu Negócio e posicionamento digital estratégico.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Projetos -->
+        <section id="projetos" class="py-24 px-6">
+            <div class="max-w-7xl mx-auto space-y-16">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div class="space-y-4 max-w-xl">
+                        <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Portfólio</p>
+                        <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Projetos em destaque no GitHub</h2>
+                    </div>
+                    <a href="https://github.com/Vittinofly" target="_blank" class="text-neutral-400 hover:text-brand-glow text-sm font-medium flex items-center gap-2 transition duration-200">
+                        <span>Ver repositórios completos</span>
+                        <i class="ph ph-arrow-up-right text-base"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Projeto 1 -->
+                    <div class="bg-obsidian-card/70 border border-obsidian-border rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:border-brand-glow/40 transition duration-300">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Aplicação Web</span>
+                                <i class="ph ph-github-logo text-neutral-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-xl text-white">Resenha Sports</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">
+                                Plataforma web desenvolvida para gestão e interação no segmento esportivo, focando em alta performance e interface intuitiva.
+                            </p>
+                        </div>
+                        <a href="https://github.com/Vittinofly/resenha-sports" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
+                            <span>Acessar Código no GitHub</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Projeto 2 -->
+                    <div class="bg-obsidian-card/70 border border-obsidian-border rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:border-brand-glow/40 transition duration-300">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Plataforma SaaS</span>
+                                <i class="ph ph-github-logo text-neutral-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-xl text-white">Studio Kelly SaaS</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">
+                                Sistema SaaS completo idealizado para automação de atendimentos e gerenciamento comercial de estúdios e estabelecimentos.
+                            </p>
+                        </div>
+                        <a href="https://github.com/Vittinofly/Studio_Kelly_Saas" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
+                            <span>Acessar Código no GitHub</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Projeto 3 -->
+                    <div class="bg-obsidian-card/70 border border-obsidian-border rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:border-brand-glow/40 transition duration-300">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Automação Python</span>
+                                <i class="ph ph-github-logo text-neutral-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-xl text-white">Baixar Músicas - Python</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">
+                                Ferramenta construída em Python para automação de downloads e conversão de áudio rápida com tratamento de dados.
+                            </p>
+                        </div>
+                        <a href="https://github.com/Vittinofly/Baixar-musicas---Python" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
+                            <span>Acessar Código no GitHub</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Certificados com Galeria e Lightbox -->
+        <section id="certificados" class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                
+                <div class="max-w-2xl space-y-4">
+                    <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Trajetória & Comunidade</p>
+                    <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Certificados e eventos de tecnologia</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Certificado 1 -->
+                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('image_3bfcd9.png')">
+                            <img src="img/DevFest.png" alt="DevFest Cerrado 2024" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
+                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <span class="text-[10px] font-bold text-brand-glow uppercase tracking-wider">GDG / Google</span>
+                            <h4 class="font-display font-bold text-base text-white">DevFest Cerrado 2024</h4>
+                            <p class="text-xs text-neutral-400">Edição 10 Anos - Unialfa Goiânia (10h)</p>
+                        </div>
+                    </div>
+
+                    <!-- Certificado 2 -->
+                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('image_3bfc7f.png')">
+                            <img src="img/CampusParty.png" alt="Campus Party Goiás 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
+                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <span class="text-[10px] font-bold text-brand-glow uppercase tracking-wider">Campus Party Brasil</span>
+                            <h4 class="font-display font-bold text-base text-white">CPGoiás4</h4>
+                            <p class="text-xs text-neutral-400">Conteúdo Presencial (33h)</p>
+                        </div>
+                    </div>
+
+                    <!-- Certificado 3 -->
+                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('image_3bfca2.jpg')">
+                            <img src="img/JoinCommunity.png" alt="JoinCommunity 12ª Edição" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
+                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <span class="text-[10px] font-bold text-brand-glow uppercase tracking-wider">JoinCommunity</span>
+                            <h4 class="font-display font-bold text-base text-white">JoinCommunity 12ª Ed.</h4>
+                            <p class="text-xs text-neutral-400">Evento de Tecnologia (12h)</p>
+                        </div>
+                    </div>
+
+                    <!-- Certificado 4 -->
+                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('image_3bf958.jpg')">
+                            <img src="img/download.png" alt="GoIAs Connect" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
+                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <span class="text-[10px] font-bold text-brand-glow uppercase tracking-wider">Go.IAs</span>
+                            <h4 class="font-display font-bold text-base text-white">GoIAs Connect</h4>
+                            <p class="text-xs text-neutral-400">Edição Grupo Ello (3h)</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center pt-4">
+                    <a href="https://github.com/Vittinofly/Certificados" target="_blank" class="inline-flex items-center gap-2 bg-obsidian-surface hover:bg-obsidian-card border border-obsidian-border text-neutral-300 text-xs font-semibold px-6 py-3.5 rounded-xl transition duration-200">
+                        <i class="ph ph-github-logo text-base text-brand-glow"></i>
+                        <span>Acessar Repositório Completo no GitHub</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-24 px-6">
+            <div class="max-w-5xl mx-auto bg-gradient-to-b from-obsidian-card to-obsidian-surface border border-obsidian-border p-10 sm:p-16 rounded-3xl text-center space-y-8 relative overflow-hidden">
+                <div class="absolute -top-24 -left-24 w-72 h-72 bg-brand-glow/10 blur-[100px] rounded-full pointer-events-none"></div>
+                
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight max-w-2xl mx-auto leading-tight">
+                    Pronto para transformar sua presença digital?
+                </h2>
+                
+                <p class="text-neutral-400 text-base max-w-xl mx-auto leading-relaxed">
+                    Entre em contato diretamente para iniciarmos seu projeto ou discutir parcerias de desenvolvimento Full Stack.
+                </p>
+
+                <div class="pt-2">
+                    <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Olá+Victor,+vi+seu+portfólio+e+preciso+de+uma+solução+digital+para+a+minha+empresa" 
+                       target="_blank" 
+                       class="inline-flex items-center gap-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-8 py-4 rounded-xl transition duration-300 shadow-xl shadow-brand-600/25 hover:scale-105">
+                        <i class="ph ph-whatsapp-logo text-xl"></i>
+                        <span>Iniciar Conversa no WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Lightbox dos Certificados -->
+    <div id="modal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md" onclick="closeModal()">
+        <div class="relative max-w-4xl w-full max-h-[90vh] flex items-center justify-center">
+            <img id="modal-img" src="" class="max-w-full max-h-[85vh] rounded-xl border border-obsidian-border shadow-2xl">
+            <button onclick="closeModal()" class="absolute -top-12 right-0 text-white text-2xl hover:text-brand-glow transition">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 border-t border-obsidian-border text-center text-xs text-neutral-500 relative z-10">
+        <p>© 2026 Victor Hugo. Desenvolvido com foco em alta performance.</p>
+    </footer>
+
+    <!-- Script Principal -->
+    <script src="main.js"></script>
+</body>
+</html>

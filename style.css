@@ -1,0 +1,29 @@
+/* Custom Styles for Victor Hugo Portfolio */
+
+/* Smooth Scroll Geral */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050508;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #131520;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e11d48;
+}
+
+/* Suporte de fallback para garantir visualização limpa de imagens */
+img {
+    content-visibility: auto;
+}
