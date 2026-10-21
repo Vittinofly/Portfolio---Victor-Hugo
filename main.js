@@ -1,7 +1,7 @@
 // Background 3D Interativo usando Three.js
 function init3DBackground() {
     const canvas = document.getElementById('canvas-3d');
-    if (!canvas) return;
+    if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -73,6 +73,37 @@ function init3DBackground() {
     });
 }
 
+function initScrollReveals() {
+    const elements = document.querySelectorAll('[data-reveal]');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        elements.forEach((element) => element.classList.add('is-visible'));
+        return;
+    }
+
+    document.body.classList.add('motion-ready');
+
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -6% 0px'
+    });
+
+    elements.forEach((element) => {
+        const delay = Number(element.dataset.revealDelay);
+        if (Number.isFinite(delay) && delay > 0) {
+            element.style.setProperty('--reveal-delay', `${delay}ms`);
+        }
+        observer.observe(element);
+    });
+}
+
 // Funções do Modal Lightbox para Certificados
 function openModal(imgSrc) {
     const modal = document.getElementById('modal');
@@ -93,4 +124,45 @@ function closeModal() {
 // Inicialização ao carregar o DOM
 document.addEventListener("DOMContentLoaded", () => {
     init3DBackground();
+    initScrollReveals();
+
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileNavigation = document.getElementById('mobile-navigation');
+    const menuIcon = menuToggle?.querySelector('i');
+
+    if (menuToggle && mobileNavigation && menuIcon) {
+        const closeMobileMenu = () => {
+            mobileNavigation.classList.add('hidden');
+            mobileNavigation.classList.remove('flex');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Abrir menu');
+            menuIcon.classList.replace('ph-x', 'ph-list');
+        };
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                closeMobileMenu();
+                return;
+            }
+
+            mobileNavigation.classList.remove('hidden');
+            mobileNavigation.classList.add('flex');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            menuToggle.setAttribute('aria-label', 'Fechar menu');
+            menuIcon.classList.replace('ph-list', 'ph-x');
+        });
+
+        mobileNavigation.querySelectorAll('a[href^="#"]').forEach((link) => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+                closeMobileMenu();
+                menuToggle.focus();
+            }
+        });
+    }
 });

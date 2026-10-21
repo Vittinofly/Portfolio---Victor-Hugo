@@ -62,14 +62,15 @@
     <div class="fixed inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/70 to-obsidian pointer-events-none z-0"></div>
 
     <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-6" id="navbar">
-        <div class="max-w-7xl mx-auto flex items-center justify-between bg-obsidian-surface/60 backdrop-blur-xl border border-obsidian-border/80 px-6 py-3.5 rounded-full shadow-2xl">
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-3 py-3 sm:px-6 sm:py-4" id="navbar">
+        <div class="max-w-7xl mx-auto bg-obsidian-surface/90 md:bg-obsidian-surface/60 backdrop-blur-xl border border-obsidian-border/80 px-4 sm:px-6 py-3 md:py-3.5 rounded-2xl md:rounded-full shadow-2xl">
+            <div class="flex items-center justify-between gap-3">
             <a href="#" class="font-display font-bold text-lg tracking-tight text-white flex items-center gap-2">
                 <span class="w-2.0 h-2.0 rounded-full bg-brand-glow animate-pulse"></span>
                 Victor<span class="text-brand-glow">Hugo</span>
             </a>
             
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
+            <nav class="hidden md:flex items-center gap-5 lg:gap-8 text-sm font-medium text-neutral-400">
                 <a href="#sobre" class="hover:text-white transition duration-200">Sobre</a>
                 <a href="#servicos" class="hover:text-white transition duration-200">Soluções</a>
                 <a href="#projetos" class="hover:text-white transition duration-200">Projetos</a>
@@ -78,51 +79,67 @@
 
             <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Olá+Victor,+vi+seu+portfólio+e+preciso+de+uma+solução+digital+para+a+minha+empresa" 
                target="_blank" 
-               class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-brand-600/20 flex items-center gap-2 hover:scale-105">
+               class="hidden md:flex bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-brand-600/20 items-center gap-2 hover:scale-105">
                 <i class="ph ph-whatsapp-logo text-base"></i>
                 <span>Falar no WhatsApp</span>
             </a>
+
+            <button id="mobile-menu-toggle" type="button" class="md:hidden w-10 h-10 rounded-xl border border-obsidian-border text-white flex items-center justify-center hover:border-brand-glow/50 transition" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-navigation">
+                <i class="ph ph-list text-xl" aria-hidden="true"></i>
+            </button>
+            </div>
+
+            <nav id="mobile-navigation" class="hidden md:hidden flex-col gap-1 pt-3 mt-3 border-t border-obsidian-border text-sm font-medium text-neutral-300" aria-label="Navegação mobile">
+                <a href="#sobre" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Sobre</a>
+                <a href="#servicos" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Soluções</a>
+                <a href="#projetos" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Projetos</a>
+                <a href="#certificados" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Certificados</a>
+                <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Ol%C3%A1+Victor%2C+vi+seu+portf%C3%B3lio+e+preciso+de+uma+solu%C3%A7%C3%A3o+digital+para+a+minha+empresa" target="_blank" rel="noopener noreferrer" class="mt-2 flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-3 text-white hover:bg-brand-700 transition">
+                    <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+                    <span>Falar no WhatsApp</span>
+                </a>
+            </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="relative z-10 pt-28">
+    <main class="relative z-10 pt-24 sm:pt-28">
 
         <!-- Hero Section -->
-        <section id="sobre" class="min-h-[85vh] flex items-center px-6 py-12">
-            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <section id="sobre" class="scroll-mt-24 sm:scroll-mt-28 min-h-0 lg:min-h-[85vh] flex items-center px-4 sm:px-6 py-10 sm:py-12">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                 
                 <!-- Coluna de Texto (7 colunas) -->
-                <div class="lg:col-span-7 space-y-8">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-glow text-xs font-medium tracking-wide">
+                <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+                    <div data-reveal="up" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-glow text-xs font-medium tracking-wide">
                         <i class="ph ph-circle-wavy-check text-sm"></i>
                         <span>Desenvolvedor Full Stack & Consultor Digital</span>
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.15]">
+                    <h1 data-reveal="up" data-reveal-delay="100" class="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.15]">
                         Engenharia de Software e <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-glow via-rose-400 to-amber-200">soluções digitais</span> para alavancar negócios.
                     </h1>
 
-                    <p class="text-white text-xl sm:text-1xl font-bold leading-snug max-w-2xl border-l-4 border-brand-500 pl-4">
+                    <p data-reveal="up" data-reveal-delay="180" class="text-white text-base sm:text-xl font-bold leading-snug max-w-2xl border-l-4 border-brand-500 pl-4">
                         Transforme visitantes em clientes. Desenvolvo sistemas e landing pages de alta performance, projetados para acelerar as suas vendas e escalar a sua operação
                     </p>
 
                     <!-- CTAs -->
-                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <div data-reveal="up" data-reveal-delay="260" class="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center gap-3 sm:gap-4 pt-2">
                         <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Olá+Victor,+vi+seu+portfólio+e+preciso+de+uma+solução+digital+para+a+minha+empresa" 
                            target="_blank" 
-                           class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-7 py-4 rounded-xl transition duration-300 shadow-xl shadow-brand-600/25 flex items-center gap-3 group">
+                           class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-6 sm:px-7 py-4 rounded-xl transition duration-300 shadow-xl shadow-brand-600/25 flex items-center justify-center gap-3 group">
                             <span>Falar com Victor</span>
                             <i class="ph ph-arrow-right text-base group-hover:translate-x-1 transition duration-200"></i>
                         </a>
 
-                        <a href="#projetos" class="bg-obsidian-surface hover:bg-obsidian-card border border-obsidian-border text-neutral-300 font-medium text-sm px-7 py-4 rounded-xl transition duration-300">
+                        <a href="#projetos" class="bg-obsidian-surface hover:bg-obsidian-card border border-obsidian-border text-neutral-300 font-medium text-sm px-6 sm:px-7 py-4 rounded-xl transition duration-300 text-center">
                             Ver Portfólio
                         </a>
                     </div>
 
                     <!-- Socials -->
-                    <div class="flex items-center gap-6 pt-4 text-neutral-400">
+                    <div data-reveal="up" data-reveal-delay="340" class="flex flex-wrap items-center gap-x-5 gap-y-3 pt-4 text-neutral-400">
                         <a href="https://github.com/Vittinofly" target="_blank" class="hover:text-brand-glow transition duration-200 text-2xl flex items-center gap-2">
                             <i class="ph ph-github-logo"></i>
                             <span class="text-sm font-medium">GitHub</span>
@@ -140,7 +157,7 @@
 
                 <!-- Foto de Perfil (5 colunas) -->
                 <div class="lg:col-span-5 flex justify-center lg:justify-end">
-                    <div class="relative w-72 sm:w-80 lg:w-full max-w-md aspect-square rounded-2xl p-1 bg-gradient-to-b from-brand-glow/30 via-obsidian-border to-transparent">
+                    <div data-reveal="right" data-reveal-delay="220" class="relative w-full max-w-[18rem] sm:max-w-xs lg:max-w-md aspect-square rounded-2xl p-1 bg-gradient-to-b from-brand-glow/30 via-obsidian-border to-transparent">
                         <div class="w-full h-full rounded-[14px] overflow-hidden bg-obsidian-card relative group">
                             <img src="IMG_7216.jpg" 
                                  alt="Victor Hugo" 
@@ -162,18 +179,18 @@
         </section>
 
         <!-- Seção de Soluções e Serviços -->
-        <section id="servicos" class="py-24 px-6 relative">
-            <div class="max-w-7xl mx-auto space-y-16">
+        <section id="servicos" class="scroll-mt-24 sm:scroll-mt-28 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative">
+            <div class="max-w-7xl mx-auto space-y-10 sm:space-y-16">
                 
-                <div class="max-w-2xl space-y-4">
+                <div data-reveal="up" class="max-w-2xl space-y-4">
                     <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Especialidades</p>
                     <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Soluções planejadas para alto impacto comercial</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
                     
                     <!-- Card 1 -->
-                    <div class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-8 rounded-2xl transition duration-300 space-y-6 group">
+                    <div data-reveal="zoom" data-reveal-delay="0" class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-6 sm:p-8 rounded-2xl transition duration-300 space-y-5 sm:space-y-6 group">
                         <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
                             <i class="ph ph-code"></i>
                         </div>
@@ -186,7 +203,7 @@
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-8 rounded-2xl transition duration-300 space-y-6 group">
+                    <div data-reveal="zoom" data-reveal-delay="100" class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-6 sm:p-8 rounded-2xl transition duration-300 space-y-5 sm:space-y-6 group">
                         <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
                             <i class="ph ph-rocket-launch"></i>
                         </div>
@@ -199,7 +216,7 @@
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-8 rounded-2xl transition duration-300 space-y-6 group">
+                    <div data-reveal="zoom" data-reveal-delay="200" class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-6 sm:p-8 rounded-2xl transition duration-300 space-y-5 sm:space-y-6 group">
                         <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
                             <i class="ph ph-chart-line-up"></i>
                         </div>
@@ -216,24 +233,24 @@
         </section>
 
         <!-- Seção de Projetos -->
-        <section id="projetos" class="py-24 px-6">
-            <div class="max-w-7xl mx-auto space-y-16">
+        <section id="projetos" class="scroll-mt-24 sm:scroll-mt-28 py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
+            <div class="max-w-7xl mx-auto space-y-10 sm:space-y-16">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div class="space-y-4 max-w-xl">
+                    <div data-reveal="up" class="space-y-4 max-w-xl">
                         <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Portfólio</p>
                         <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Projetos em destaque no GitHub</h2>
                     </div>
-                    <a href="https://github.com/Vittinofly" target="_blank" class="text-neutral-400 hover:text-brand-glow text-sm font-medium flex items-center gap-2 transition duration-200">
+                    <a data-reveal="left" href="https://github.com/Vittinofly" target="_blank" class="text-neutral-400 hover:text-brand-glow text-sm font-medium flex items-center gap-2 transition duration-200">
                         <span>Ver repositórios completos</span>
                         <i class="ph ph-arrow-up-right text-base"></i>
                     </a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
                     
                     <!-- Projeto 1 -->
-                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                    <div data-reveal="zoom" data-reveal-delay="0" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
                         <div class="relative h-48 bg-black overflow-hidden flex flex-col items-center justify-center gap-2 text-neutral-500">
                             <i class="ph ph-image text-4xl"></i>
                             <span class="text-xs">Imagem do projeto</span>
@@ -255,7 +272,7 @@
                     </div>
 
                     <!-- Projeto 2 -->
-                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                    <div data-reveal="zoom" data-reveal-delay="100" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
                         <div class="relative h-48 bg-black overflow-hidden flex flex-col items-center justify-center gap-2 text-neutral-500">
                             <img src="img/StudioKelly.png" alt="Site do Studio Kelly" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         </div>
@@ -276,7 +293,7 @@
                     </div>
 
                     <!-- Projeto 3 -->
-                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                    <div data-reveal="zoom" data-reveal-delay="200" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
                         <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/LaRose.png')">
                             <img src="img/LaRose.png" alt="Site da La Rose" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
@@ -304,18 +321,18 @@
         </section>
 
         <!-- Seção de Certificados com Galeria e Lightbox -->
-        <section id="certificados" class="py-24 px-6 relative">
-            <div class="max-w-7xl mx-auto space-y-16">
+        <section id="certificados" class="scroll-mt-24 sm:scroll-mt-28 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative">
+            <div class="max-w-7xl mx-auto space-y-10 sm:space-y-16">
                 
-                <div class="max-w-2xl space-y-4">
+                <div data-reveal="up" class="max-w-2xl space-y-4">
                     <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Trajetória & Comunidade</p>
                     <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Certificados e eventos de tecnologia</h2>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     
                     <!-- Certificado 1 -->
-                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                    <div data-reveal="zoom" data-reveal-delay="0" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
                         <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/DevFest.png')">
                             <img src="img/DevFest.png" alt="DevFest Cerrado 2024" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
@@ -330,7 +347,7 @@
                     </div>
 
                     <!-- Certificado 2 -->
-                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                    <div data-reveal="zoom" data-reveal-delay="80" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
                         <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/CampusParty.png')">
                             <img src="img/CampusParty.png" alt="Campus Party Goiás 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
@@ -345,7 +362,7 @@
                     </div>
 
                     <!-- Certificado 3 -->
-                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                    <div data-reveal="zoom" data-reveal-delay="160" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
                         <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/JoinCommunity.png')">
                             <img src="img/JoinCommunity.png" alt="JoinCommunity 12ª Edição" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
@@ -360,7 +377,7 @@
                     </div>
 
                     <!-- Certificado 4 -->
-                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                    <div data-reveal="zoom" data-reveal-delay="240" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
                         <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/download.png')">
                             <img src="img/download.png" alt="GoIAs Connect" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
@@ -387,8 +404,8 @@
         </section>
 
         <!-- CTA Final -->
-        <section class="py-24 px-6">
-            <div class="max-w-5xl mx-auto bg-gradient-to-b from-obsidian-card to-obsidian-surface border border-obsidian-border p-10 sm:p-16 rounded-3xl text-center space-y-8 relative overflow-hidden">
+        <section class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
+            <div data-reveal="zoom" class="max-w-5xl mx-auto bg-gradient-to-b from-obsidian-card to-obsidian-surface border border-obsidian-border p-6 sm:p-10 lg:p-16 rounded-3xl text-center space-y-6 sm:space-y-8 relative overflow-hidden">
                 <div class="absolute -top-24 -left-24 w-72 h-72 bg-brand-glow/10 blur-[100px] rounded-full pointer-events-none"></div>
                 
                 <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight max-w-2xl mx-auto leading-tight">
@@ -423,7 +440,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-10 px-6 border-t border-obsidian-border text-center text-xs text-neutral-500 relative z-10">
+    <footer class="py-8 sm:py-10 px-4 sm:px-6 border-t border-obsidian-border text-center text-xs text-neutral-500 relative z-10">
         <p>© 2026 Victor Hugo. Desenvolvido com foco em alta performance.</p>
     </footer>
 
