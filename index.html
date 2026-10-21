@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=MSywwgB0nzMc&format=png&color=000000">
     <title>Victor Hugo | Desenvolvedor Full Stack & Soluções Digitais</title>
     
     <!-- Google Fonts: Inter e Plus Jakarta Sans -->
@@ -232,8 +233,12 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     
                     <!-- Projeto 1 -->
-                    <div class="bg-obsidian-card/70 border border-obsidian-border rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:border-brand-glow/40 transition duration-300">
-                        <div class="space-y-4">
+                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                        <div class="relative h-48 bg-black overflow-hidden flex flex-col items-center justify-center gap-2 text-neutral-500">
+                            <i class="ph ph-image text-4xl"></i>
+                            <span class="text-xs">Imagem do projeto</span>
+                        </div>
+                        <div class="p-5 space-y-4">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Aplicação Web</span>
                                 <i class="ph ph-github-logo text-neutral-400 text-xl"></i>
@@ -242,47 +247,56 @@
                             <p class="text-neutral-400 text-sm leading-relaxed">
                                 Plataforma web desenvolvida para gestão e interação no segmento esportivo, focando em alta performance e interface intuitiva.
                             </p>
+                            <a href="https://github.com/Vittinofly/resenha-sports" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
+                                <span>Acessar Código no GitHub</span>
+                                <i class="ph ph-arrow-right"></i>
+                            </a>
                         </div>
-                        <a href="https://github.com/Vittinofly/resenha-sports" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
-                            <span>Acessar Código no GitHub</span>
-                            <i class="ph ph-arrow-right"></i>
-                        </a>
                     </div>
 
                     <!-- Projeto 2 -->
-                    <div class="bg-obsidian-card/70 border border-obsidian-border rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:border-brand-glow/40 transition duration-300">
-                        <div class="space-y-4">
+                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                        <div class="relative h-48 bg-black overflow-hidden flex flex-col items-center justify-center gap-2 text-neutral-500">
+                            <img src="img/StudioKelly.png" alt="Site do Studio Kelly" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-5 space-y-4">
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Plataforma SaaS</span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Landing Page</span>
                                 <i class="ph ph-github-logo text-neutral-400 text-xl"></i>
                             </div>
                             <h3 class="font-display font-bold text-xl text-white">Studio Kelly SaaS</h3>
                             <p class="text-neutral-400 text-sm leading-relaxed">
                                 Sistema SaaS completo idealizado para automação de atendimentos e gerenciamento comercial de estúdios e estabelecimentos.
                             </p>
+                            <a href="https://github.com/Vittinofly/Studio_Kelly_Saas" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
+                                <span>Acessar Código no GitHub</span>
+                                <i class="ph ph-arrow-right"></i>
+                            </a>
                         </div>
-                        <a href="https://github.com/Vittinofly/Studio_Kelly_Saas" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
-                            <span>Acessar Código no GitHub</span>
-                            <i class="ph ph-arrow-right"></i>
-                        </a>
                     </div>
 
                     <!-- Projeto 3 -->
-                    <div class="bg-obsidian-card/70 border border-obsidian-border rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:border-brand-glow/40 transition duration-300">
-                        <div class="space-y-4">
+                    <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/LaRose.png')">
+                            <img src="img/LaRose.png" alt="Site da La Rose" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
+                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Landing Page</span>
-                                <i class="ph ph-github-logo text-neutral-400 text-xl"></i>
+                                <i class="ph ph-browser text-brand-glow text-xl"></i>
                             </div>
                             <h3 class="font-display font-bold text-xl text-white">La Rose - Landing Page para empresa de eventos</h3>
                             <p class="text-neutral-400 text-sm leading-relaxed">
                                 Landing page desenvolvida para a empresa La Rose, especializada em eventos e entretenimento.
                             </p>
+                            <a href="https://laroseeventos.netlify.app/" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
+                                <span>Acesse o site</span>
+                                <i class="ph ph-arrow-right"></i>
+                            </a>
                         </div>
-                        <a href="https://github.com/Vittinofly/La-rose" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
-                            <span>Acessar Código no GitHub</span>
-                            <i class="ph ph-arrow-right"></i>
-                        </a>
                     </div>
 
                 </div>
@@ -302,7 +316,7 @@
                     
                     <!-- Certificado 1 -->
                     <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('image_3bfcd9.png')">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/DevFest.png')">
                             <img src="img/DevFest.png" alt="DevFest Cerrado 2024" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
                                 <i class="ph ph-magnifying-glass-plus text-2xl"></i>
@@ -317,7 +331,7 @@
 
                     <!-- Certificado 2 -->
                     <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('image_3bfc7f.png')">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/CampusParty.png')">
                             <img src="img/CampusParty.png" alt="Campus Party Goiás 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
                                 <i class="ph ph-magnifying-glass-plus text-2xl"></i>
@@ -332,7 +346,7 @@
 
                     <!-- Certificado 3 -->
                     <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('image_3bfca2.jpg')">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/JoinCommunity.png')">
                             <img src="img/JoinCommunity.png" alt="JoinCommunity 12ª Edição" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
                                 <i class="ph ph-magnifying-glass-plus text-2xl"></i>
@@ -347,7 +361,7 @@
 
                     <!-- Certificado 4 -->
                     <div class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('image_3bf958.jpg')">
+                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/download.png')">
                             <img src="img/download.png" alt="GoIAs Connect" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
                                 <i class="ph ph-magnifying-glass-plus text-2xl"></i>
