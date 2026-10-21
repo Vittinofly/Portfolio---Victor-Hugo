@@ -3,6 +3,7 @@
 /* Smooth Scroll Geral */
 html {
     scroll-behavior: smooth;
+    overflow-x: clip;
 }
 
 /* Custom Scrollbar */
@@ -61,6 +62,180 @@ body.motion-ready [data-reveal="zoom"].is-visible.group:hover {
     box-shadow: 0 1rem 2.5rem rgb(255 42 75 / 12%);
 }
 
+.stack-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.stack-marquee-track,
+.stack-marquee-group {
+    display: flex;
+    width: max-content;
+    align-items: center;
+}
+
+.stack-marquee-track {
+    animation: stack-marquee-scroll 38s linear infinite;
+    will-change: transform;
+}
+
+.stack-marquee-group {
+    flex: 0 0 auto;
+    justify-content: space-around;
+    min-width: 100vw;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+    padding: 0 clamp(1rem, 2.5vw, 2.5rem);
+    color: #e4e4e7;
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.stack-marquee-group i {
+    color: #ff2a4b;
+    font-size: 0.9rem;
+    flex: 0 0 auto;
+}
+
+.stack-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 16rem;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    border: 1px solid #212435;
+    border-radius: 1rem;
+    background: linear-gradient(145deg, rgb(19 21 32 / 92%), rgb(13 14 21 / 82%));
+    transition: border-color 250ms ease, background-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+}
+
+.stack-card::before {
+    position: absolute;
+    z-index: -1;
+    top: -4.5rem;
+    right: -4.5rem;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    background: rgb(255 42 75 / 10%);
+    content: "";
+    filter: blur(1.5rem);
+    transition: background-color 250ms ease, transform 250ms ease;
+}
+
+.stack-card:hover {
+    transform: translateY(-0.3rem);
+    border-color: rgb(255 42 75 / 45%);
+    box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 24%);
+}
+
+.stack-card:hover::before {
+    transform: scale(1.25);
+    background: rgb(255 42 75 / 18%);
+}
+
+.stack-card-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #ff2a4b;
+}
+
+.stack-card-icon i {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: 0 0 2.5rem;
+    place-items: center;
+    border: 1px solid rgb(255 42 75 / 25%);
+    border-radius: 0.75rem;
+    background: rgb(255 42 75 / 9%);
+    font-size: 1.35rem;
+}
+
+.stack-card-icon span {
+    color: #a1a1aa;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.stack-card-index {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    color: rgb(255 255 255 / 5%);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 4.25rem;
+    font-weight: 800;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.stack-card h3 {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.25rem;
+    color: #fff;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.stack-card p {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.6rem;
+    color: #c4c4cc;
+    font-size: 0.875rem;
+    line-height: 1.65;
+}
+
+.stack-tags {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1.25rem;
+}
+
+.stack-tags span {
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgb(255 255 255 / 13%);
+    border-radius: 0.65rem;
+    background: rgb(255 255 255 / 6%);
+    color: #f4f4f5;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.stack-card-ai {
+    border-color: rgb(255 42 75 / 22%);
+    background: linear-gradient(145deg, rgb(55 19 34 / 70%), rgb(19 21 32 / 92%) 65%);
+}
+
+@media (max-width: 639px) {
+    .stack-card {
+        min-height: 0;
+        padding: 1.25rem;
+    }
+}
+
+@keyframes stack-marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -74,5 +249,9 @@ body.motion-ready [data-reveal="zoom"].is-visible.group:hover {
         transition: none;
         box-shadow: none;
         will-change: auto;
+    }
+
+    .stack-marquee-track {
+        animation: none;
     }
 }
