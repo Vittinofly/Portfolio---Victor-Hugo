@@ -1,529 +1,296 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f8fa">
     <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=MSywwgB0nzMc&format=png&color=000000">
-    <title>Victor Hugo | Desenvolvimento Web e Suporte de Informática</title>
-    <meta name="description" content="Criação de sites e sistemas para levar sua empresa ao digital, além de suporte presencial e remoto para computadores: formatação, instalação de aplicativos, otimização e limpeza.">
+    <title>Victor Hugo | Desenvolvedor Web</title>
+    <meta name="description" content="Conheça os projetos de Victor Hugo, desenvolvedor web. Criação de sites e sistemas, suporte técnico e soluções digitais para empresas.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:title" content="Victor Hugo | Desenvolvimento Web e Suporte de Informática">
-    <meta property="og:description" content="Levo empresas ao digital com sites e sistemas e ofereço suporte presencial ou remoto para computadores.">
+    <meta property="og:title" content="Victor Hugo | Desenvolvedor Web">
+    <meta property="og:description" content="Projetos, soluções digitais e suporte técnico por Victor Hugo.">
     <meta property="og:image" content="https://github.com/Vittinofly.png">
-    <meta property="og:image:alt" content="Victor Hugo, desenvolvedor Full Stack">
+    <meta property="og:image:alt" content="Victor Hugo">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Victor Hugo | Desenvolvimento Web e Suporte de Informática">
-    <meta name="twitter:description" content="Sites, sistemas e suporte presencial ou remoto para computadores.">
+    <meta name="twitter:title" content="Victor Hugo | Desenvolvedor Web">
+    <meta name="twitter:description" content="Projetos, soluções digitais e suporte técnico por Victor Hugo.">
     <meta name="twitter:image" content="https://github.com/Vittinofly.png">
-    
-    <!-- Google Fonts: Inter e Plus Jakarta Sans -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#fff1f2',
-                            100: '#ffe4e6',
-                            500: '#f43f5e',
-                            600: '#e11d48',
-                            700: '#be123c',
-                            glow: '#ff2a4b'
-                        },
-                        obsidian: {
-                            DEFAULT: '#050508',
-                            surface: '#0d0e15',
-                            card: '#131520',
-                            border: '#212435',
-                            borderHover: '#3b3f5c'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <!-- Three.js para o Fundo 3D Interativo -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Estilos Customizados -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="main.js" defer></script>
 </head>
-<body class="bg-obsidian text-gray-200 font-sans antialiased selection:bg-brand-600 selection:text-white overflow-x-hidden">
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-    <!-- Canvas para Animação 3D -->
-    <canvas id="canvas-3d" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
-
-    <!-- Overlay Gradiente -->
-    <div class="fixed inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/70 to-obsidian pointer-events-none z-0"></div>
-
-    <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-3 py-3 sm:px-6 sm:py-4" id="navbar">
-        <div class="max-w-7xl mx-auto bg-obsidian-surface/90 md:bg-obsidian-surface/60 backdrop-blur-xl border border-obsidian-border/80 px-4 sm:px-6 py-3 md:py-3.5 rounded-2xl md:rounded-full shadow-2xl">
-            <div class="flex items-center justify-between gap-3">
-            <a href="#" class="font-display font-bold text-lg tracking-tight text-white flex items-center gap-2">
-                <span class="w-2.0 h-2.0 rounded-full bg-brand-glow animate-pulse"></span>
-                Victor<span class="text-brand-glow">Hugo</span>
-            </a>
-            
-            <nav class="hidden md:flex items-center gap-5 lg:gap-8 text-sm font-medium text-neutral-400">
-                <a href="#sobre" class="hover:text-white transition duration-200">Sobre</a>
-                <a href="#servicos" class="hover:text-white transition duration-200">Soluções</a>
-                <a href="#stack" class="hover:text-white transition duration-200">Stack</a>
-                <a href="#projetos" class="hover:text-white transition duration-200">Projetos</a>
-                <a href="#certificados" class="hover:text-white transition duration-200">Certificados</a>
-            </nav>
-
-            <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Olá+Victor,+vi+seu+portfólio+e+preciso+de+uma+solução+digital+para+a+minha+empresa" 
-               target="_blank" 
-               class="hidden md:flex bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-brand-600/20 items-center gap-2 hover:scale-105">
-                <i class="ph ph-whatsapp-logo text-base"></i>
-                <span>Falar no WhatsApp</span>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#sobre" aria-label="Victor Hugo, início">
+                <span class="brand-mark" aria-hidden="true">VH</span>
+                <span>Victor Hugo</span>
             </a>
 
-            <button id="mobile-menu-toggle" type="button" class="md:hidden w-10 h-10 rounded-xl border border-obsidian-border text-white flex items-center justify-center hover:border-brand-glow/50 transition" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-navigation">
-                <i class="ph ph-list text-xl" aria-hidden="true"></i>
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+                aria-controls="primary-navigation">
+                <i class="ph ph-list" aria-hidden="true"></i>
             </button>
-            </div>
 
-            <nav id="mobile-navigation" class="hidden md:hidden flex-col gap-1 pt-3 mt-3 border-t border-obsidian-border text-sm font-medium text-neutral-300" aria-label="Navegação mobile">
-                <a href="#sobre" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Sobre</a>
-                <a href="#servicos" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Soluções</a>
-                <a href="#stack" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Stack</a>
-                <a href="#projetos" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Projetos</a>
-                <a href="#certificados" class="rounded-lg px-3 py-3 hover:bg-white/5 hover:text-white transition">Certificados</a>
-                <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Ol%C3%A1+Victor%2C+vi+seu+portf%C3%B3lio+e+preciso+de+uma+solu%C3%A7%C3%A3o+digital+para+a+minha+empresa" target="_blank" rel="noopener noreferrer" class="mt-2 flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-3 text-white hover:bg-brand-700 transition">
-                    <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
-                    <span>Falar no WhatsApp</span>
-                </a>
+            <nav class="primary-nav" id="primary-navigation" aria-label="Navegação principal">
+                <a href="#servicos">Soluções</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#stack">Tecnologias</a>
+                <a href="#certificados">Trajetória</a>
+                <a class="button button-small nav-contact" href="#contato">Vamos conversar</a>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="relative z-10 pt-24 sm:pt-28">
-
-        <!-- Hero Section -->
-        <section id="sobre" class="scroll-mt-24 sm:scroll-mt-28 min-h-0 lg:min-h-[85vh] flex items-center px-4 sm:px-6 py-10 sm:py-12">
-            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                
-                <!-- Coluna de Texto (7 colunas) -->
-                <div class="lg:col-span-7 space-y-6 sm:space-y-8">
-                    <h1 data-reveal="up" data-reveal-delay="100" class="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.15]">
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-glow via-rose-400 to-amber-200">Desenvolvimento Web</span> e <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-glow via-rose-400 to-amber-200">Suporte técnico</span> para o seu dia a dia.
-                    </h1>
-
-                    <p data-reveal="up" data-reveal-delay="180" class="text-white text-base sm:text-xl font-bold leading-snug max-w-2xl border-l-4 border-brand-500 pl-4">
-                        Crio sites e sistemas para sua empresa e ajudo com instalação, configuração e manutenção do computador, presencialmente ou à distância.
+    <main id="conteudo">
+        <section class="hero section" id="sobre" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div class="hero-copy" data-reveal>
+                    <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Desenvolvedor web & suporte técnico</p>
+                    <h1 id="hero-title">Tecnologia que ajuda boas ideias a <span>ganharem vida.</span></h1>
+                    <p class="hero-intro">
+                        Crio sites e sistemas para empresas e ajudo pessoas a resolver desafios do dia a dia com tecnologia.
                     </p>
-
-                    <!-- CTAs -->
-                    <div data-reveal="up" data-reveal-delay="260" class="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center gap-3 sm:gap-4 pt-2">
-                        <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Olá+Victor,+vi+seu+portfólio+e+preciso+de+uma+solução+digital+para+a+minha+empresa" 
-                           target="_blank" 
-                           class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-6 sm:px-7 py-4 rounded-xl transition duration-300 shadow-xl shadow-brand-600/25 flex items-center justify-center gap-3 group">
-                            <span>Fale comigo</span>
-                            <i class="ph ph-arrow-right text-base group-hover:translate-x-1 transition duration-200"></i>
-                        </a>
-
-                        <a href="#projetos" class="bg-obsidian-surface hover:bg-obsidian-card border border-obsidian-border text-neutral-300 font-medium text-sm px-6 sm:px-7 py-4 rounded-xl transition duration-300 text-center">
-                            Ver projetos
+                    <div class="hero-actions">
+                        <a class="button" href="#projetos">Ver projetos <i class="ph ph-arrow-down-right" aria-hidden="true"></i></a>
+                        <a class="button button-secondary" href="https://api.whatsapp.com/send/?phone=5564996956530&amp;text=Ol%C3%A1%20Victor%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener noreferrer">
+                            Falar comigo <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
                         </a>
                     </div>
-
-                    <!-- Socials -->
-                    <div data-reveal="up" data-reveal-delay="340" class="flex flex-wrap items-center gap-x-5 gap-y-3 pt-4 text-neutral-400">
-                        <a href="https://github.com/Vittinofly" target="_blank" class="hover:text-brand-glow transition duration-200 text-2xl flex items-center gap-2">
-                            <i class="ph ph-github-logo"></i>
-                            <span class="text-sm font-medium">GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/%E1%B4%A0%C9%AA%E1%B4%84%E1%B4%9B%E1%B4%8F%CA%80-%CA%9C%E1%B4%9C%C9%A2%E1%B4%8F-b56328442/" target="_blank" class="hover:text-brand-glow transition duration-200 text-2xl flex items-center gap-2">
-                            <i class="ph ph-linkedin-logo"></i>
-                            <span class="text-sm font-medium">LinkedIn</span>
-                        </a>
-                        <a href="https://www.instagram.com/y.ovictor" target="_blank" class="hover:text-brand-glow transition duration-200 text-2xl flex items-center gap-2">
-                            <i class="ph ph-instagram-logo"></i>
-                            <span class="text-sm font-medium">Instagram</span>
-                        </a>
+                    <div class="social-links" aria-label="Redes sociais">
+                        <a href="https://github.com/Vittinofly" target="_blank" rel="noopener noreferrer"><i class="ph ph-github-logo" aria-hidden="true"></i> GitHub</a>
+                        <a href="https://www.linkedin.com/in/%E1%B4%A0%C9%AA%E1%B4%84%E1%B4%9B%E1%B4%8F%CA%80-%CA%9C%E1%B4%9C%C9%A2%E1%B4%8F-b56328442/" target="_blank" rel="noopener noreferrer"><i class="ph ph-linkedin-logo" aria-hidden="true"></i> LinkedIn</a>
+                        <a href="https://www.instagram.com/victoresolve/" target="_blank" rel="noopener noreferrer"><i class="ph ph-instagram-logo" aria-hidden="true"></i> Instagram profissional</a>
                     </div>
                 </div>
 
-                <!-- Foto de Perfil (5 colunas) -->
-                <div class="lg:col-span-5 flex justify-center lg:justify-end">
-                    <div data-reveal="right" data-reveal-delay="220" class="relative w-full max-w-[18rem] sm:max-w-xs lg:max-w-md aspect-square rounded-2xl p-1 bg-gradient-to-b from-brand-glow/30 via-obsidian-border to-transparent">
-                        <div class="w-full h-full rounded-[14px] overflow-hidden bg-obsidian-card relative group">
-                            <img src="https://github.com/Vittinofly.png"
-                                 alt="Victor Hugo" 
-                                 id="profile-img"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                            
-                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80"></div>
-                            
-                            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-obsidian-surface/80 backdrop-blur-md border border-obsidian-border/80">
-                                <p class="font-display font-bold text-white text-base">Victor Hugo</p>
-                                <p class="text-neutral-400 text-xs">Desenvolvimento web & suporte de informática</p>
+                <div class="hero-photo-wrap" data-reveal data-reveal-delay="100">
+                    <div class="hero-photo-frame">
+                        <img src="https://github.com/Vittinofly.png" alt="Foto de perfil de Victor Hugo" class="hero-photo" fetchpriority="high">
+                    </div>
+                    <p class="photo-caption"><span class="photo-caption-dot" aria-hidden="true"></span> São Luís de Montes Belos, Goiás · Brasil</p>
+                </div>
+            </div>
+            <div class="container hero-note" data-reveal data-reveal-delay="160">
+                <span>Do planejamento à entrega</span>
+                <span class="hero-note-line" aria-hidden="true"></span>
+                <a href="#servicos">Conheça como posso ajudar <i class="ph ph-arrow-down" aria-hidden="true"></i></a>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="servicos" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <p class="eyebrow">Como posso ajudar</p>
+                    <h2 id="services-title">Soluções pensadas para o seu dia a dia.</h2>
+                    <p>Da presença digital ao cuidado com seus equipamentos, com atenção ao que você realmente precisa.</p>
+                </div>
+
+                <div class="service-grid">
+                    <article class="service-card" data-reveal>
+                        <span class="service-icon" aria-hidden="true"><i class="ph ph-browser"></i></span>
+                        <h3>Sua empresa no digital</h3>
+                        <p>Sites e landing pages para apresentar seus serviços, fortalecer sua presença online e facilitar o contato com novos clientes.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="80">
+                        <span class="service-icon" aria-hidden="true"><i class="ph ph-kanban"></i></span>
+                        <h3>Sistemas para simplificar processos</h3>
+                        <p>Aplicações e plataformas sob medida para organizar processos e apoiar as tarefas do dia a dia da sua empresa.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="160">
+                        <span class="service-icon" aria-hidden="true"><i class="ph ph-desktop-tower"></i></span>
+                        <h3>Suporte para seu computador</h3>
+                        <p>Formatação, instalação e configuração de aplicativos, otimização e limpeza digital ou física, presencialmente ou à distância conforme o serviço.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projetos" aria-labelledby="projects-title">
+            <div class="container">
+                <div class="section-heading section-heading-row" data-reveal>
+                    <div>
+                        <p class="eyebrow">Trabalho selecionado</p>
+                        <h2 id="projects-title">Projetos que saíram do papel.</h2>
+                    </div>
+                    <a class="text-link" href="https://github.com/Vittinofly" target="_blank" rel="noopener noreferrer">
+                        Ver repositórios no GitHub <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="project-grid">
+                    <article class="project-card" data-reveal>
+                        <div class="project-cover project-cover-resenha" role="img" aria-label="Capa gráfica do projeto Resenha Sports">
+                            <span class="project-cover-label">Aplicação web</span>
+                            <span class="resenha-mark" aria-hidden="true">RS</span>
+                            <div class="project-cover-title">
+                                <span>Gestão esportiva</span>
+                                <strong>Resenha<br>Sports</strong>
                             </div>
+                            <i class="ph ph-soccer-ball project-cover-icon" aria-hidden="true"></i>
                         </div>
-                    </div>
-                </div>
+                        <div class="project-content">
+                            <div class="project-meta"><span>Aplicação web</span><i class="ph ph-github-logo" aria-hidden="true"></i></div>
+                            <h3>Resenha Sports</h3>
+                            <p>Plataforma web para gestão e interação no segmento esportivo, com foco em uma experiência intuitiva.</p>
+                            <a class="text-link" href="https://github.com/Vittinofly/resenha-sports" target="_blank" rel="noopener noreferrer">
+                                Explorar o código <i class="ph ph-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
 
-            </div>
-        </section>
+                    <article class="project-card" data-reveal data-reveal-delay="80">
+                        <div class="project-image">
+                            <img src="img/StudioKelly.png" alt="Prévia do sistema Studio Kelly" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta"><span>Plataforma SaaS</span><i class="ph ph-github-logo" aria-hidden="true"></i></div>
+                            <h3>Studio Kelly SaaS</h3>
+                            <p>Sistema para automação de atendimentos e gerenciamento comercial de estúdios e estabelecimentos.</p>
+                            <a class="text-link" href="https://github.com/Vittinofly/Studio_Kelly_Saas" target="_blank" rel="noopener noreferrer">
+                                Explorar o código <i class="ph ph-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
 
-        <!-- Seção de Soluções e Serviços -->
-        <section id="servicos" class="scroll-mt-24 sm:scroll-mt-28 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative">
-            <div class="max-w-7xl mx-auto space-y-10 sm:space-y-16">
-                
-                <div data-reveal="up" class="max-w-2xl space-y-4">
-                    <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Especialidades</p>
-                    <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Do seu negócio online ao suporte no seu computador</h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-8">
-                    
-                    <!-- Card 1 -->
-                    <div data-reveal="zoom" data-reveal-delay="0" class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-6 sm:p-8 rounded-2xl transition duration-300 space-y-5 sm:space-y-6 group">
-                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
-                            <i class="ph ph-browser"></i>
+                    <article class="project-card" data-reveal data-reveal-delay="160">
+                        <button class="project-image image-button" type="button" data-certificate-image="img/LaRose.png" aria-label="Ampliar prévia do site La Rose">
+                            <img src="img/LaRose.png" alt="Prévia do site La Rose" loading="lazy">
+                            <span class="image-hint"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i> Ampliar imagem</span>
+                        </button>
+                        <div class="project-content">
+                            <div class="project-meta"><span>Landing page</span><i class="ph ph-browser" aria-hidden="true"></i></div>
+                            <h3>La Rose</h3>
+                            <p>Landing page desenvolvida para uma empresa especializada em eventos e entretenimento.</p>
+                            <a class="text-link" href="https://laroseeventos.netlify.app/" target="_blank" rel="noopener noreferrer">
+                                Visitar o site <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                            </a>
                         </div>
-                        <div class="space-y-3">
-                            <h3 class="font-display font-bold text-xl text-white">Sua empresa presente no digital</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed">
-                                Sites e landing pages profissionais para apresentar seus serviços, fortalecer sua presença online e facilitar o contato de novos clientes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div data-reveal="zoom" data-reveal-delay="100" class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-6 sm:p-8 rounded-2xl transition duration-300 space-y-5 sm:space-y-6 group">
-                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
-                            <i class="ph ph-kanban"></i>
-                        </div>
-                        <div class="space-y-3">
-                            <h3 class="font-display font-bold text-xl text-white">Sistemas que simplificam sua operação</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed">
-                                Aplicações e plataformas sob medida para organizar processos e apoiar as tarefas do dia a dia da sua empresa.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div data-reveal="zoom" data-reveal-delay="200" class="bg-obsidian-card/70 border border-obsidian-border hover:border-brand-glow/40 p-6 sm:p-8 rounded-2xl transition duration-300 space-y-5 sm:space-y-6 group">
-                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-glow flex items-center justify-center text-2xl group-hover:bg-brand-600 group-hover:text-white transition duration-300">
-                            <i class="ph ph-desktop-tower"></i>
-                        </div>
-                        <div class="space-y-3">
-                            <h3 class="font-display font-bold text-xl text-white">Suporte e cuidado para seu computador</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed">
-                                Formatação, instalação e configuração de aplicativos, otimização e limpeza digital. Também faço limpeza física interna, com atendimento presencial ou remoto conforme o serviço.
-                            </p>
-                        </div>
-                    </div>
-
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Stack e ferramentas -->
-        <section id="stack" class="scroll-mt-24 sm:scroll-mt-28 py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-            <div class="max-w-7xl mx-auto space-y-10 sm:space-y-14">
-                <div class="px-4 sm:px-6 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-                    <div data-reveal="up" class="max-w-2xl space-y-4">
-                        <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Stack & Inteligência</p>
-                        <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Tecnologia a serviço de boas ideias</h2>
-                        <p class="text-neutral-400 text-sm sm:text-base leading-relaxed">
-                            Tecnologias, dados e inteligência artificial reunidos no meu fluxo de trabalho para tirar ideias do papel.
-                        </p>
-                    </div>
-                    <div data-reveal="left" class="hidden lg:flex items-center gap-2 text-xs font-medium text-neutral-500 border border-obsidian-border rounded-full px-4 py-2">
-                        <span class="relative flex h-2 w-2">
-                            <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-ping"></span>
-                            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-                        </span>
-                        <span>ECOSSISTEMA ATIVO</span>
-                    </div>
+        <section class="section section-soft" id="stack" aria-labelledby="stack-title">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <p class="eyebrow">Ferramentas do dia a dia</p>
+                    <h2 id="stack-title">Tecnologia a serviço de boas ideias.</h2>
+                    <p>Um resumo das tecnologias e ferramentas que fazem parte do meu processo de trabalho.</p>
                 </div>
 
-                <div class="stack-marquee border-y border-obsidian-border/70 bg-obsidian-surface/50 py-4" aria-hidden="true">
-                    <div class="stack-marquee-track">
-                        <div class="stack-marquee-group">
-                            <span>Python</span><i class="ph ph-asterisk"></i><span>HTML & CSS</span><i class="ph ph-asterisk"></i><span>JavaScript</span><i class="ph ph-asterisk"></i><span>Node.js</span><i class="ph ph-asterisk"></i><span>Next.js</span><i class="ph ph-asterisk"></i><span>SQL Server</span><i class="ph ph-asterisk"></i><span>PostgreSQL</span><i class="ph ph-asterisk"></i><span>MySQL</span><i class="ph ph-asterisk"></i><span>Git & GitHub</span><i class="ph ph-asterisk"></i><span>VS Code</span><i class="ph ph-asterisk"></i><span>Copilot · Claude · Gemini</span><i class="ph ph-asterisk"></i>
-                        </div>
-                        <div class="stack-marquee-group">
-                            <span>Python</span><i class="ph ph-asterisk"></i><span>HTML & CSS</span><i class="ph ph-asterisk"></i><span>JavaScript</span><i class="ph ph-asterisk"></i><span>Node.js</span><i class="ph ph-asterisk"></i><span>Next.js</span><i class="ph ph-asterisk"></i><span>SQL Server</span><i class="ph ph-asterisk"></i><span>PostgreSQL</span><i class="ph ph-asterisk"></i><span>MySQL</span><i class="ph ph-asterisk"></i><span>Git & GitHub</span><i class="ph ph-asterisk"></i><span>VS Code</span><i class="ph ph-asterisk"></i><span>Copilot · Claude · Gemini</span><i class="ph ph-asterisk"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <article data-reveal="zoom" data-reveal-delay="0" class="stack-card">
-                        <div class="stack-card-icon"><i class="ph ph-code" aria-hidden="true"></i><span>01 / DESENVOLVIMENTO</span></div>
-                        <span class="stack-card-index" aria-hidden="true">01</span>
-                        <h3>Linguagens & frameworks</h3>
-                        <div class="stack-tags">
-                            <span>Python</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Node.js</span><span>Next.js</span>
-                        </div>
+                <div class="technology-grid">
+                    <article class="technology-group" data-reveal>
+                        <h3><i class="ph ph-code" aria-hidden="true"></i> Desenvolvimento</h3>
+                        <ul class="tag-list">
+                            <li>Python</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Node.js</li><li>Next.js</li>
+                        </ul>
                     </article>
-
-                    <article data-reveal="zoom" data-reveal-delay="80" class="stack-card">
-                        <div class="stack-card-icon"><i class="ph ph-database" aria-hidden="true"></i><span>02 / DADOS</span></div>
-                        <span class="stack-card-index" aria-hidden="true">02</span>
-                        <h3>Bancos de dados</h3>
-                        <div class="stack-tags">
-                            <span>SQL Server</span><span>PostgreSQL</span><span>MySQL</span>
-                        </div>
+                    <article class="technology-group" data-reveal data-reveal-delay="60">
+                        <h3><i class="ph ph-database" aria-hidden="true"></i> Bancos de dados</h3>
+                        <ul class="tag-list">
+                            <li>SQL Server</li><li>PostgreSQL</li><li>MySQL</li>
+                        </ul>
                     </article>
-
-                    <article data-reveal="zoom" data-reveal-delay="160" class="stack-card">
-                        <div class="stack-card-icon"><i class="ph ph-git-branch" aria-hidden="true"></i><span>03 / FLUXO</span></div>
-                        <span class="stack-card-index" aria-hidden="true">03</span>
-                        <h3>Ferramentas de trabalho</h3>
-                        <div class="stack-tags">
-                            <span>Git</span><span>GitHub</span><span>VS Code</span>
-                        </div>
+                    <article class="technology-group" data-reveal data-reveal-delay="120">
+                        <h3><i class="ph ph-git-branch" aria-hidden="true"></i> Ferramentas</h3>
+                        <ul class="tag-list">
+                            <li>Git</li><li>GitHub</li><li>VS Code</li>
+                        </ul>
                     </article>
-
-                    <article data-reveal="zoom" data-reveal-delay="240" class="stack-card stack-card-ai">
-                        <div class="stack-card-icon"><i class="ph ph-sparkle" aria-hidden="true"></i><span>04 / INTELIGÊNCIA</span></div>
-                        <span class="stack-card-index" aria-hidden="true">04</span>
-                        <h3>IA no meu processo</h3>
+                    <article class="technology-group" data-reveal data-reveal-delay="180">
+                        <h3><i class="ph ph-sparkle" aria-hidden="true"></i> Inteligência artificial</h3>
                         <p>Uso IA como parceira para pesquisar, criar, validar ideias e acelerar tarefas do dia a dia.</p>
-                        <div class="stack-tags">
-                            <span>GitHub Copilot</span><span>Claude</span><span>Gemini</span>
-                        </div>
+                        <ul class="tag-list">
+                            <li>GitHub Copilot</li><li>Claude</li><li>Gemini</li>
+                        </ul>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Projetos -->
-        <section id="projetos" class="scroll-mt-24 sm:scroll-mt-28 py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
-            <div class="max-w-7xl mx-auto space-y-10 sm:space-y-16">
-                
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div data-reveal="up" class="space-y-4 max-w-xl">
-                        <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Portfólio</p>
-                        <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Ideias que já saíram do papel</h2>
+        <section class="section" id="certificados" aria-labelledby="journey-title">
+            <div class="container">
+                <div class="section-heading section-heading-row" data-reveal>
+                    <div>
+                        <p class="eyebrow">Trajetória & comunidade</p>
+                        <h2 id="journey-title">Aprendizado que continua.</h2>
+                        <p>Eventos e experiências que fazem parte da minha jornada em tecnologia.</p>
                     </div>
-                    <a data-reveal="left" href="https://github.com/Vittinofly" target="_blank" class="text-neutral-400 hover:text-brand-glow text-sm font-medium flex items-center gap-2 transition duration-200">
-                        <span>Ver repositórios completos</span>
-                        <i class="ph ph-arrow-up-right text-base"></i>
+                    <a class="text-link" href="https://github.com/Vittinofly/Certificados" target="_blank" rel="noopener noreferrer">
+                        Ver todos os certificados <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
                     </a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
-                    
-                    <!-- Projeto 1 -->
-                    <div data-reveal="zoom" data-reveal-delay="0" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden flex flex-col items-center justify-center gap-2 text-neutral-500">
-                            <i class="ph ph-image text-4xl"></i>
-                            <span class="text-xs">Imagem do projeto</span>
-                        </div>
-                        <div class="p-5 space-y-4">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Aplicação Web</span>
-                                <i class="ph ph-github-logo text-neutral-400 text-xl"></i>
-                            </div>
-                            <h3 class="font-display font-bold text-xl text-white">Resenha Sports</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed">
-                                Plataforma web desenvolvida para gestão e interação no segmento esportivo, focando em alta performance e interface intuitiva.
-                            </p>
-                            <a href="https://github.com/Vittinofly/resenha-sports" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
-                                <span>Acessar Código no GitHub</span>
-                                <i class="ph ph-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Projeto 2 -->
-                    <div data-reveal="zoom" data-reveal-delay="100" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden flex flex-col items-center justify-center gap-2 text-neutral-500">
-                            <img src="img/StudioKelly.png" alt="Site do Studio Kelly" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        </div>
-                        <div class="p-5 space-y-4">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Plataforma SaaS</span>
-                                <i class="ph ph-github-logo text-neutral-400 text-xl"></i>
-                            </div>
-                            <h3 class="font-display font-bold text-xl text-white">Studio Kelly SaaS</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed">
-                                Sistema SaaS completo idealizado para automação de atendimentos e gerenciamento comercial de estúdios e estabelecimentos.
-                            </p>
-                            <a href="https://github.com/Vittinofly/Studio_Kelly_Saas" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
-                                <span>Acessar Código no GitHub</span>
-                                <i class="ph ph-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Projeto 3 -->
-                    <div data-reveal="zoom" data-reveal-delay="200" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/LaRose.png')">
-                            <img src="img/LaRose.png" alt="Site da La Rose" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
-                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-5 space-y-4">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-500/10 text-brand-glow border border-brand-500/20">Landing Page</span>
-                                <i class="ph ph-browser text-brand-glow text-xl"></i>
-                            </div>
-                            <h3 class="font-display font-bold text-xl text-white">La Rose - Landing Page para empresa de eventos</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed">
-                                Landing page desenvolvida para a empresa La Rose, especializada em eventos e entretenimento.
-                            </p>
-                            <a href="https://laroseeventos.netlify.app/" target="_blank" class="text-xs font-semibold text-brand-glow hover:text-white flex items-center gap-2 transition duration-200 pt-4 border-t border-obsidian-border">
-                                <span>Acesse o site</span>
-                                <i class="ph ph-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
+                <div class="certificate-grid">
+                    <article class="certificate-card" data-reveal>
+                        <button class="certificate-image image-button" type="button" data-certificate-image="img/DevFest.png" aria-label="Ampliar certificado DevFest Cerrado 2024">
+                            <img src="img/DevFest.png" alt="Certificado do DevFest Cerrado 2024" loading="lazy">
+                            <span class="image-hint"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i> Ampliar</span>
+                        </button>
+                        <div class="certificate-info"><span>GDG / Google</span><h3>DevFest Cerrado 2024</h3><p>Edição 10 Anos — Unialfa Goiânia (10h)</p></div>
+                    </article>
+                    <article class="certificate-card" data-reveal data-reveal-delay="60">
+                        <button class="certificate-image image-button" type="button" data-certificate-image="img/CampusParty.png" aria-label="Ampliar certificado Campus Party Goiás 4">
+                            <img src="img/CampusParty.png" alt="Certificado da Campus Party Goiás 4" loading="lazy">
+                            <span class="image-hint"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i> Ampliar</span>
+                        </button>
+                        <div class="certificate-info"><span>Campus Party Brasil</span><h3>CPGoiás4</h3><p>Conteúdo presencial (33h)</p></div>
+                    </article>
+                    <article class="certificate-card" data-reveal data-reveal-delay="120">
+                        <button class="certificate-image image-button" type="button" data-certificate-image="img/JoinCommunity.png" aria-label="Ampliar certificado JoinCommunity 12ª Edição">
+                            <img src="img/JoinCommunity.png" alt="Certificado JoinCommunity 12ª Edição" loading="lazy">
+                            <span class="image-hint"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i> Ampliar</span>
+                        </button>
+                        <div class="certificate-info"><span>JoinCommunity</span><h3>JoinCommunity 12ª Ed.</h3><p>Evento de tecnologia (12h)</p></div>
+                    </article>
+                    <article class="certificate-card" data-reveal data-reveal-delay="180">
+                        <button class="certificate-image image-button" type="button" data-certificate-image="img/download.png" aria-label="Ampliar certificado GoIAs Connect">
+                            <img src="img/download.png" alt="Certificado GoIAs Connect, edição Grupo Ello" loading="lazy">
+                            <span class="image-hint"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i> Ampliar</span>
+                        </button>
+                        <div class="certificate-info"><span>Go.IAs</span><h3>GoIAs Connect</h3><p>Edição Grupo Ello (3h)</p></div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Certificados com Galeria e Lightbox -->
-        <section id="certificados" class="scroll-mt-24 sm:scroll-mt-28 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative">
-            <div class="max-w-7xl mx-auto space-y-10 sm:space-y-16">
-                
-                <div data-reveal="up" class="max-w-2xl space-y-4">
-                    <p class="text-brand-glow font-semibold text-xs uppercase tracking-widest">Trajetória & Comunidade</p>
-                    <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">Certificados e eventos de tecnologia</h2>
-                </div>
-
-                <div class="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                    
-                    <!-- Certificado 1 -->
-                    <div data-reveal="zoom" data-reveal-delay="0" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/DevFest.png')">
-                            <img src="img/DevFest.png" alt="DevFest Cerrado 2024" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
-                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-5 space-y-2">
-                            <span class="text-[10px] font-bold text-brand-glow uppercase tracking-wider">GDG / Google</span>
-                            <h4 class="font-display font-bold text-base text-white">DevFest Cerrado 2024</h4>
-                            <p class="text-xs text-neutral-400">Edição 10 Anos - Unialfa Goiânia (10h)</p>
-                        </div>
-                    </div>
-
-                    <!-- Certificado 2 -->
-                    <div data-reveal="zoom" data-reveal-delay="80" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/CampusParty.png')">
-                            <img src="img/CampusParty.png" alt="Campus Party Goiás 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
-                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-5 space-y-2">
-                            <span class="text-[10px] font-bold text-brand-glow uppercase tracking-wider">Campus Party Brasil</span>
-                            <h4 class="font-display font-bold text-base text-white">CPGoiás4</h4>
-                            <p class="text-xs text-neutral-400">Conteúdo Presencial (33h)</p>
-                        </div>
-                    </div>
-
-                    <!-- Certificado 3 -->
-                    <div data-reveal="zoom" data-reveal-delay="160" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/JoinCommunity.png')">
-                            <img src="img/JoinCommunity.png" alt="JoinCommunity 12ª Edição" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
-                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-5 space-y-2">
-                            <span class="text-[10px] font-bold text-brand-glow uppercase tracking-wider">JoinCommunity</span>
-                            <h4 class="font-display font-bold text-base text-white">JoinCommunity 12ª Ed.</h4>
-                            <p class="text-xs text-neutral-400">Evento de Tecnologia (12h)</p>
-                        </div>
-                    </div>
-
-                    <!-- Certificado 4 -->
-                    <div data-reveal="zoom" data-reveal-delay="240" class="bg-obsidian-card border border-obsidian-border rounded-2xl overflow-hidden group hover:border-brand-glow/40 transition duration-300">
-                        <div class="relative h-48 bg-black overflow-hidden cursor-pointer" onclick="openModal('img/download.png')">
-                            <img src="img/download.png" alt="GoIAs Connect" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white">
-                                <i class="ph ph-magnifying-glass-plus text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-5 space-y-2">
-                            <span class="text-[10px] font-bold text-brand-glow uppercase tracking-wider">Go.IAs</span>
-                            <h4 class="font-display font-bold text-base text-white">GoIAs Connect</h4>
-                            <p class="text-xs text-neutral-400">Edição Grupo Ello (3h)</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="text-center pt-4">
-                    <a href="https://github.com/Vittinofly/Certificados" target="_blank" class="inline-flex items-center gap-2 bg-obsidian-surface hover:bg-obsidian-card border border-obsidian-border text-neutral-300 text-xs font-semibold px-6 py-3.5 rounded-xl transition duration-200">
-                        <i class="ph ph-github-logo text-base text-brand-glow"></i>
-                        <span>Acessar Repositório Completo no GitHub</span>
-                    </a>
-                </div>
-
+        <section class="contact-section" id="contato" aria-labelledby="contact-title">
+            <div class="container contact-panel" data-reveal>
+                <p class="eyebrow">Vamos conversar</p>
+                <h2 id="contact-title">Tem uma ideia ou um desafio para resolver?</h2>
+                <p>Conte um pouco do que você precisa. Vamos conversar sobre uma solução que faça sentido para o seu negócio.</p>
+                <a class="button" href="https://api.whatsapp.com/send/?phone=5564996956530&amp;text=Ol%C3%A1%20Victor%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener noreferrer">
+                    Falar pelo WhatsApp <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                </a>
             </div>
         </section>
-
-        <!-- CTA Final -->
-        <section class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
-            <div data-reveal="zoom" class="max-w-5xl mx-auto bg-gradient-to-b from-obsidian-card to-obsidian-surface border border-obsidian-border p-6 sm:p-10 lg:p-16 rounded-3xl text-center space-y-6 sm:space-y-8 relative overflow-hidden">
-                <div class="absolute -top-24 -left-24 w-72 h-72 bg-brand-glow/10 blur-[100px] rounded-full pointer-events-none"></div>
-                
-                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight max-w-2xl mx-auto leading-tight">
-                    Tem uma ideia ou um desafio para resolver?
-                </h2>
-                
-                <p class="text-neutral-400 text-base max-w-xl mx-auto leading-relaxed">
-                    Vamos conversar sobre uma solução digital que faça sentido para o seu negócio.
-                </p>
-
-                <div class="pt-2">
-                    <a href="https://api.whatsapp.com/send/?phone=5564996956530&text=Olá+Victor,+vi+seu+portfólio+e+preciso+de+uma+solução+digital+para+a+minha+empresa" 
-                       target="_blank" 
-                       class="inline-flex items-center gap-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-8 py-4 rounded-xl transition duration-300 shadow-xl shadow-brand-600/25 hover:scale-105">
-                        <i class="ph ph-whatsapp-logo text-xl"></i>
-                        <span>Vamos conversar</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <!-- Modal Lightbox dos Certificados -->
-    <div id="modal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md" onclick="closeModal()">
-        <div class="relative max-w-4xl w-full max-h-[90vh] flex items-center justify-center">
-            <img id="modal-img" src="" class="max-w-full max-h-[85vh] rounded-xl border border-obsidian-border shadow-2xl">
-            <button onclick="closeModal()" class="absolute -top-12 right-0 text-white text-2xl hover:text-brand-glow transition">
-                <i class="ph ph-x"></i>
-            </button>
-        </div>
+    <div class="lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada da imagem" hidden>
+        <button class="lightbox-close" type="button" aria-label="Fechar imagem"><i class="ph ph-x" aria-hidden="true"></i></button>
+        <img src="" alt="" class="lightbox-image">
     </div>
 
-    <!-- Footer -->
-    <footer class="py-8 sm:py-10 px-4 sm:px-6 border-t border-obsidian-border text-center text-xs text-neutral-500 relative z-10">
-        <p>© 2026 Victor Hugo. Desenvolvido com foco em alta performance.</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand" href="#sobre"><span class="brand-mark" aria-hidden="true">VH</span><span>Victor Hugo</span></a>
+            <p>© 2026 Victor Hugo. Feito com cuidado.</p>
+            <a class="back-to-top" href="#sobre">Voltar ao início <i class="ph ph-arrow-up" aria-hidden="true"></i></a>
+        </div>
     </footer>
-
-    <!-- Script Principal -->
-    <script src="main.js"></script>
 </body>
 </html>
